@@ -1,0 +1,27 @@
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+      body { background: #000; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; }
+      .mobile-frame { width: 390px; height: 844px; background: #09090b; border-radius: 44px; border: 12px solid #27272a; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+      .status-bar { height: 44px; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; color: white; font-weight: bold; position: absolute; width:100%; z-index:10; }
+      
+      .radar-container { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; border-bottom: 1px solid #27272a; }
+      .radar { width: 200px; height: 200px; border-radius: 50%; border: 2px solid #10b981; position: relative; overflow: hidden; background: rgba(16,185,129,0.05); }
+      .sweep { position: absolute; top: 0; left: 100px; width: 100px; height: 100px; background: conic-gradient(from 90deg, transparent 0%, rgba(16,185,129,0.5) 100%); transform-origin: 0 100%; animation: spin 2s linear infinite; }
+      @keyframes spin { to { transform: rotate(360deg); } }
+      .node { position: absolute; width: 8px; height: 8px; background: #10b981; border-radius: 50%; box-shadow: 0 0 10px #10b981; }
+      .n1 { top: 40px; left: 140px; animation: blink 2s infinite; }
+      .n2 { top: 120px; left: 40px; animation: blink 2s infinite 0.5s; }
+      .n3 { top: 160px; left: 150px; animation: blink 2s infinite 1s; }
+      @keyframes blink { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
+      .radar-text { color: #10b981; font-weight: bold; margin-top: 20px; letter-spacing: 2px; }
+      
+      .sos-container { height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+      #sos-btn { width: 150px; height: 150px; border-radius: 75px; background: #ef4444; color: white; font-size: 40px; font-weight: 900; border: 8px solid rgba(239,68,68,0.3); box-shadow: 0 0 30px rgba(239,68,68,0.5); cursor: pointer; transition: transform 0.1s; }
+      #sos-btn:active { transform: scale(0.95); }
+      .sos-desc { color: #a1a1aa; text-align: center; padding: 0 40px; margin-top: 24px; font-size: 14px; line-height: 1.5; }
+      
+      .overlay { position: absolute; inset: 0; background: rgba(239,68,68,0.95); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 30px; opacity: 0; pointer-events: none; transition: opacity 0.3s; z-index: 50; }
+      .overlay.active { opacity: 1; pointer-events: auto; animation: siren 1s infinite alternate; }
+      @keyframes siren { from { background: rgba(239,68,68,0.95); } to { background: rgba(185,28,28,0.95); } }
+      .overlay h1 { color: white; font-size: 32px; font-weight: 900; margin-bottom: 20px; letter-spacing: 2px; }
+      .overlay p { color: #fee2e2; font-size: 18px; margin-bottom: 60px; line-height: 1.5; }
+      #cancel-btn { background: white; color: #ef4444; border: none; padding: 16px 32px; border-radius: 24px; font-weight: 900; font-size: 16px; cursor: pointer; }
